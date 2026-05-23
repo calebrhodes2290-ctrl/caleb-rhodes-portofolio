@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caleb Rhodes — Content Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --ink-2: #3d3a34;
+    --ink-3: #7a756c;
+    --paper: #f9f6f0;
+    --paper-2: #efe9df;
+    --accent: #b5490a;
+    --accent-light: #f2ede5;
+    --rule: #d6cfc3;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 5rem 3rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .hero-kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hero-kicker::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.4rem;
+    color: var(--ink);
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--ink-2);
+    max-width: 600px;
+    margin-bottom: 2rem;
+    line-height: 1.75;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--rule);
+    color: var(--ink-3);
+    border-radius: 2px;
+  }
+
+  /* ── FEATURED STRIP ── */
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 2.5rem 3rem 1.2rem;
+    max-width: 860px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ── FEATURED ARTICLE ── */
+  .featured {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 3rem;
+    border-bottom: 2px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .featured-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+
+  .featured h2 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+
+  .featured-meta {
+    font-size: 0.78rem;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    margin-bottom: 1.2rem;
+  }
+
+  .featured-excerpt {
+    font-size: 0.97rem;
+    color: var(--ink-2);
+    line-height: 1.8;
+    margin-bottom: 1.4rem;
+  }
+
+  .read-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .read-link:hover { opacity: 0.65; }
+
+  .featured-aside {
+    padding-top: 0.4rem;
+  }
+
+  .aside-quote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.55;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding-left: 1.2rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .stat-block {
+    background: var(--paper-2);
+    padding: 1.2rem 1.4rem;
+    border-radius: 3px;
+  }
+
+  .stat-block-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 0.6rem;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.85rem;
+  }
+
+  .stat-row:last-child { border-bottom: none; }
+
+  .stat-val {
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 1.05rem;
+  }
+
+  /* ── ARTICLE GRID ── */
+  .grid-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .article-card {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .article-card:nth-child(odd) {
+    padding-right: 2.5rem;
+    border-right: 1px solid var(--rule);
+  }
+
+  .article-card:nth-child(even) {
+    padding-left: 2.5rem;
+  }
+
+  .article-card:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .card-category {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 0.6rem;
+  }
+
+  .card-category.tech { color: #1a5276; }
+  .card-category.guide { color: #1e6823; }
+  .card-category.opinion { color: #7d3c98; }
+
+  .article-card h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.7rem;
+    color: var(--ink);
+  }
+
+  .article-card p {
+    font-size: 0.88rem;
+    color: var(--ink-2);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .card-meta {
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    display: flex;
+    gap: 1rem;
+  }
+
+  /* ── WRITING SAMPLE ── */
+  .sample-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sample-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2rem;
+  }
+
+  .sample-header h2 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .sample-toggle {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .toggle-btn {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--ink-3);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+
+  .toggle-btn.active, .toggle-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .sample-piece {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .sample-piece.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .sample-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+
+  .sample-meta {
+    font-size: 0.78rem;
+    color: var(--ink-3);
+    margin-bottom: 1.6rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sample-body {
+    font-size: 0.97rem;
+    color: var(--ink-2);
+    line-height: 1.85;
+    max-width: 640px;
+  }
+
+  .sample-body p { margin-bottom: 1.2em; }
+
+  .sample-body h4 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 1.6em 0 0.5em;
+  }
+
+  .sample-body code {
+    background: var(--paper-2);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    font-size: 0.88em;
+    font-family: 'Courier New', monospace;
+    color: var(--accent);
+  }
+
+  .sample-body blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 1.2rem;
+    margin: 1.4rem 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contact h2 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .contact p {
+    font-size: 0.9rem;
+    color: var(--ink-3);
+  }
+
+  .cta-btn {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+
+  .cta-btn:hover { background: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.5rem 3rem;
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--ink-3);
+  }
+
+  @media (max-width: 680px) {
+    nav, .hero, .section-label, .featured, .grid-section, .sample-section, .contact, footer {
+      padding-left: 1.4rem;
+      padding-right: 1.4rem;
+    }
+    .featured { grid-template-columns: 1fr; gap: 2rem; }
+    .grid-section { grid-template-columns: 1fr; }
+    .article-card:nth-child(odd) { padding-right: 0; border-right: none; }
+    .article-card:nth-child(even) { padding-left: 0; }
+    .contact { flex-direction: column; gap: 1.5rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Caleb Rhodes</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#samples">Samples</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-kicker">Content Portfolio</div>
+  <h1>Writing that makes<br><em>complex ideas land.</em></h1>
+  <p class="hero-bio">
+    I'm a California-based content writer and AI specialist with a decade of experience translating technical depth into clear, compelling prose — from explainer articles and API documentation to opinion pieces and long-form guides.
+  </p>
+  <div class="hero-tags">
+    <span class="tag">Tech & AI Writing</span>
+    <span class="tag">Technical Documentation</span>
+    <span class="tag">SEO Content</span>
+    <span class="tag">Long-Form Guides</span>
+    <span class="tag">AI Training Data</span>
+  </div>
+</header>
+
+<!-- FEATURED -->
+<div class="section-label" id="work">Featured Work</div>
+
+<article class="featured">
+  <div>
+    <div class="featured-label">★ Featured Article · AI & Machine Learning</div>
+    <h2>Why "Alignment" Is the Wrong Word for What We Actually Need</h2>
+    <div class="featured-meta">Published in Towards Data Science &nbsp;·&nbsp; 2,800 words &nbsp;·&nbsp; March 2024</div>
+    <p class="featured-excerpt">
+      The AI safety community has converged on "alignment" as its defining term — but language shapes what we see. In this piece, I argue that framing the problem as aligning AI to human values obscures a deeper challenge: humans don't have unified, stable values to align to. The real work is building systems that navigate value conflict gracefully, not systems that lock onto a fixed target that may already be wrong.
+    </p>
+    <a class="read-link" href="mailto:rhodescaleb90@gmail.com">Request Full Sample →</a>
+  </div>
+  <div class="featured-aside">
+    <blockquote class="aside-quote">
+      "Alignment implies a destination. But values are a conversation that never ends — and the most dangerous AI is one that stopped listening."
+    </blockquote>
+    <div class="stat-block">
+      <div class="stat-block-label">Article Stats</div>
+      <div class="stat-row"><span>Reading time</span><span class="stat-val">11 min</span></div>
+      <div class="stat-row"><span>Word count</span><span class="stat-val">2,800</span></div>
+      <div class="stat-row"><span>Engagement rate</span><span class="stat-val">68%</span></div>
+      <div class="stat-row"><span>Medium claps</span><span class="stat-val">1.4k</span></div>
+    </div>
+  </div>
+</article>
+
+<!-- ARTICLE GRID -->
+<section class="grid-section">
+
+  <div class="article-card">
+    <div class="card-category tech">Technical Guide</div>
+    <h3>Prompt Engineering for Production: Beyond "Be More Specific"</h3>
+    <p>A practitioner's guide to building reliable prompt pipelines — covering chain-of-thought structuring, negative constraints, and testing frameworks that scale past prototype demos.</p>
+    <div class="card-meta">
+      <span>1,900 words</span>
+      <span>DataAnnotation Blog</span>
+      <span>Jan 2024</span>
+    </div>
+  </div>
+
+  <div class="article-card">
+    <div class="card-category guide">How-To</div>
+    <h3>The Freelancer's Guide to AI Training Platforms in 2024</h3>
+    <p>A candid breakdown of every major annotation and evaluation platform — pay rates, task types, qualification tests, and what they won't tell you on the landing page.</p>
+    <div class="card-meta">
+      <span>3,100 words</span>
+      <span>Self-published</span>
+      <span>Feb 2024</span>
+    </div>
+  </div>
+
+  <div class="article-card">
+    <div class="card-category opinion">Opinion</div>
+    <h3>LLM Benchmarks Are Broken — Here's What to Measure Instead</h3>
+    <p>MMLU and HumanEval tell us how models perform in controlled conditions. They tell us almost nothing about how they behave in the wild. An argument for deployment-time evaluation.</p>
+    <div class="card-meta">
+      <span>1,600 words</span>
+      <span>Substack</span>
+      <span>Dec 2023</span>
+    </div>
+  </div>
+
+  <div class="article-card">
+    <div class="card-category tech">Technical Documentation</div>
+    <h3>REST vs. Streaming APIs for LLM Apps: A Practical Decision Guide</h3>
+    <p>API documentation and explainer written for a developer audience — comparing latency profiles, error handling patterns, and cost tradeoffs with working code examples in Python.</p>
+    <div class="card-meta">
+      <span>2,200 words</span>
+      <span>Client project</span>
+      <span>Nov 2023</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- WRITING SAMPLES -->
+<section class="sample-section" id="samples">
+  <div class="sample-header">
+    <h2>Writing Samples</h2>
+    <div class="sample-toggle">
+      <button class="toggle-btn active" onclick="showSample('tech')">Technical</button>
+      <button class="toggle-btn" onclick="showSample('opinion')">Opinion</button>
+      <button class="toggle-btn" onclick="showSample('seo')">SEO</button>
+    </div>
+  </div>
+
+  <!-- TECHNICAL SAMPLE -->
+  <div class="sample-piece active" id="sample-tech">
+    <div class="sample-title">Understanding RLHF: How Human Feedback Shapes Language Models</div>
+    <div class="sample-meta">Technical explainer &nbsp;·&nbsp; Audience: ML practitioners &nbsp;·&nbsp; 500-word excerpt</div>
+    <div class="sample-body">
+      <p>Reinforcement Learning from Human Feedback (RLHF) has become the dominant technique for making large language models behave the way their developers intend. But the term bundles together several distinct mechanisms — and conflating them leads to a lot of confused writing about AI safety.</p>
+
+      <h4>The three-stage pipeline</h4>
+      <p>In the canonical RLHF setup, training happens in three stages. First, the base model is fine-tuned on supervised demonstration data — human-written examples of desirable outputs. Second, a reward model is trained on pairwise human preference judgments: annotators see two model responses to the same prompt and choose which is better. Third, the language model is optimized against this reward model using a policy gradient method, typically PPO.</p>
+
+      <blockquote>The reward model is a compressed representation of human judgment — not human judgment itself. That distinction matters enormously when things go wrong.</blockquote>
+
+      <p>The critical insight is that the reward model is a <code>proxy</code> for human preferences, not the real thing. When the language model is trained against it, it learns to maximize the reward model's scores. This creates the classic specification gaming problem: if the reward model has any systematic biases or blind spots, the policy will exploit them.</p>
+
+      <h4>Where annotator judgment enters</h4>
+      <p>The quality of RLHF depends entirely on the quality of preference data. In practice, this means annotators making rapid binary choices — often under time pressure, often on difficult edge cases involving subtle factual errors, stylistic hedging, or carefully disguised hallucinations. A response that sounds authoritative and fluent tends to beat one that is accurate but qualified, unless annotators are specifically trained to penalize false confidence.</p>
+
+      <p>This is why annotation guidelines matter at least as much as annotator selection. Rubrics that define "helpfulness," "harmlessness," and "honesty" operationally — with examples and edge cases — produce better reward signal than high-level instructions alone.</p>
+    </div>
+  </div>
+
+  <!-- OPINION SAMPLE -->
+  <div class="sample-piece" id="sample-opinion">
+    <div class="sample-title">Stop Treating AI Hallucinations Like a Bug to Be Fixed</div>
+    <div class="sample-meta">Opinion piece &nbsp;·&nbsp; Audience: tech-aware general readers &nbsp;·&nbsp; 500-word excerpt</div>
+    <div class="sample-body">
+      <p>Every few weeks, a new paper announces progress on reducing AI hallucinations. Researchers celebrate dropping the rate from 18% to 11% on some benchmark. Product teams ship "grounding" features that tether outputs to retrieved documents. The implicit promise is the same: we're on our way to fixing this.</p>
+
+      <p>We're not. And the framing of hallucination as a bug — something to be patched away — is making it harder to use these systems wisely.</p>
+
+      <h4>What hallucination actually is</h4>
+      <p>Language models don't "know" things the way a database knows things. They're pattern-completion engines trained on a massive, noisy, contradictory corpus of human writing. When a model generates plausible-sounding false claims, it isn't malfunctioning — it's doing exactly what it was trained to do: produce text that fits the statistical pattern of confident, informative prose.</p>
+
+      <blockquote>Asking an LLM to never confabulate is like asking water not to flow downhill. You can route it differently, but you can't change what it is.</blockquote>
+
+      <p>The analogy I keep returning to: a highly-read, opinionated, confident colleague who sometimes misremembers sources and fills in gaps from pattern-matching rather than checking. You don't fire that person — you learn how to work with them. You verify the things that matter. You don't ask them to recall the exact wording of a statute.</p>
+
+      <h4>What good deployment looks like</h4>
+      <p>The organizations using AI most effectively aren't the ones with the lowest hallucination rates. They're the ones with the clearest mental models of where hallucination risk is high (novel, specific, verifiable facts) versus low (reasoning through supplied context, summarizing, formatting). They've built workflows that route tasks accordingly — using LLMs as drafting and reasoning tools while keeping human or retrieval-based verification in the loop for anything that ends up in a database or a customer-facing output.</p>
+
+      <p>The goal shouldn't be zero hallucination. It should be hallucination that's visible, catchable, and appropriate for the task at hand.</p>
+    </div>
+  </div>
+
+  <!-- SEO SAMPLE -->
+  <div class="sample-piece" id="sample-seo">
+    <div class="sample-title">What Is Natural Language Processing? A Complete Guide for 2024</div>
+    <div class="sample-meta">SEO content &nbsp;·&nbsp; Target keyword: "what is NLP" &nbsp;·&nbsp; 500-word excerpt</div>
+    <div class="sample-body">
+      <p>Natural language processing (NLP) is a branch of artificial intelligence that enables computers to read, understand, and generate human language. It sits at the intersection of linguistics, computer science, and machine learning — and it powers more of your daily digital life than you probably realize.</p>
+
+      <p>Every time you speak to a voice assistant, get a spam email flagged automatically, or read a suggested reply in your inbox, NLP is at work. This guide breaks down what NLP actually is, how it works, and why it matters in 2024.</p>
+
+      <h4>How does NLP work?</h4>
+      <p>At a high level, NLP systems work by converting text or speech into a numerical representation that a machine learning model can process. Modern NLP is dominated by <code>transformer</code> architectures — the same underlying technology behind ChatGPT, Claude, and Google's Gemini.</p>
+
+      <p>These models are trained on enormous amounts of text data to learn statistical patterns in language: which words tend to appear together, how sentence structure relates to meaning, and how context shifts interpretation. A phrase like "she couldn't bear the bear" is ambiguous to a dictionary lookup but obvious to a well-trained language model from context alone.</p>
+
+      <blockquote>NLP doesn't teach computers to "understand" language the way humans do. It teaches them to process language well enough to be useful — which turns out to be a very different, and achievable, goal.</blockquote>
+
+      <h4>Key NLP tasks and applications</h4>
+      <p>The field covers a wide range of specific problems. Sentiment analysis determines whether a piece of text expresses a positive, negative, or neutral opinion — widely used in social media monitoring and customer feedback tools. Named entity recognition identifies and classifies nouns in text (people, organizations, locations). Machine translation converts text from one language to another. Summarization condenses long documents into shorter versions without losing key information.</p>
+
+      <p>Each task has its own benchmarks, datasets, and specialized architectures — though modern large language models have made general-purpose approaches competitive across nearly all of them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <h2>Let's work together.</h2>
+    <p>Available for freelance writing, technical content, and AI training data projects.</p>
+    <p style="margin-top:0.4rem; font-size:0.85rem; color: var(--accent);">rhodescaleb90@gmail.com</p>
+  </div>
+  <a class="cta-btn" href="mailto:rhodescaleb90@gmail.com">Get in Touch</a>
+</section>
+
+<footer>
+  <span>© 2024 Caleb Rhodes</span>
+  <span>California, United States · Available for remote work</span>
+</footer>
+
+<script>
+  function showSample(type) {
+    document.querySelectorAll('.sample-piece').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.toggle-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('sample-' + type).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
